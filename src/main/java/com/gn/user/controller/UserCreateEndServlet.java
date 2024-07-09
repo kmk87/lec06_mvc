@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/user/createEnd")
+@WebServlet(name="userCreateEnd",urlPatterns="/user/createEnd")
 public class UserCreateEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
