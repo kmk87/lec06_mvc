@@ -19,7 +19,7 @@
 				<form action='/board/createEnd' name="create_board_form" method="post" enctype="multipart/form-data">	
 					<input type="text" name="board_title" placeholder="제목을 입력하세요."> <br>
 					<input type="text" name="board_content" placeholder="내용을 입력하세요."><br>
-					<input type="text" name="board_writer" placeholder="작성자를 입력하세요."> <br>
+					<!-- <input type="text" name="board_writer" placeholder="작성자를 입력하세요."> <br> -->
 					<input type="file" name="thumbnail" accept=".png,.jpg,.jpeg"><br>
 					<input type="button" value="등록" onclick="createBoardForm();"> 
 					<input type="reset" value="취소">
@@ -36,10 +36,14 @@
 			} else if(!form.board_content.value){
 				alert("내용을 입력하세요.");
 				form.board_content.focus();
-			} else if(!form.board_writer.value){
+			} 
+			
+			/* else if(!form.board_writer.value){
 				alert("작성자를 입력하세요.");
 				form.board_writer.focus();
-			}else if (!form.thumbnail.value) {
+			} */
+			
+			else if (!form.thumbnail.value) {
 				alert('이미지 파일을 선택하세요.');
 				form.thumbnail.focus();	
 			} //이미지 파일 입력 된 후

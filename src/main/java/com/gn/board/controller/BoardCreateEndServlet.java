@@ -8,11 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.gn.board.service.BoardService;
 import com.gn.board.vo.Board;
+import com.gn.user.vo.User;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -48,13 +50,21 @@ public class BoardCreateEndServlet extends HttpServlet {
 			// System.out.println(oriName+"->"+reName);
 			String title = mr.getParameter("board_title");
 			String content = mr.getParameter("board_content");
-			String writer = mr.getParameter("board_writer");
+			//String writer = mr.getParameter("board_writer");
 			
-			// Board 객체에 정보 담기
 			Board b = new Board();
 			b.setBoard_title(title);
 			b.setBoard_content(content);
-			b.setBoard_writer(writer);
+			
+			HttpSession session = request.getSession(false);
+			if(session != null) {
+				User u = (User)session.getAttribute("user");
+				int userNo = u.getUser_no();
+				b.setBoard_writer(userNo);
+				
+			}
+			
+			// Board 객체에 정보 담기
 			b.setOri_thumbnail(oriName);
 			b.setNew_thumbnail(reName);
 			
