@@ -33,7 +33,7 @@ public class UserLoginEndServlet extends HttpServlet {
 		//System.out.println("비밀번호 확인 : "+pw);
 		
 		
-		 User u = new UserService().loginUser(id,pw);
+		// User u = new UserService().loginUser(id,pw);
 		
 		// 1. User u = new UserService().loginUser(id,pw); 코드 주석처리
 		// 2. User 객체의 매개변수 생성자에 데이터베이스 실제 값을 넣어서 User 구성
@@ -41,7 +41,7 @@ public class UserLoginEndServlet extends HttpServlet {
 		// 3. 매개변수 생성자로 만든 객체 주석처리
 		// 4. User u = null;로 실패 상황도 테스트해보기
 		
-		//User u = new User(3,"user02","pass02","asd");
+		User u = new User(3,"user02","pass02","asd");
 		// User u = null;
 		
 		if(u != null) {
