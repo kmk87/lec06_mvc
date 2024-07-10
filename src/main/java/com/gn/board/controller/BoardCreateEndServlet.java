@@ -2,6 +2,7 @@ package com.gn.board.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.gn.board.service.BoardService;
+import com.gn.board.vo.Board;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -42,7 +45,27 @@ public class BoardCreateEndServlet extends HttpServlet {
 			// 7. 파일명 정보
 			String oriName = mr.getOriginalFileName("thumbnail");
 			String reName = mr.getFilesystemName("thumbnail");
-			System.out.println(oriName+"->"+reName);
+			// System.out.println(oriName+"->"+reName);
+			String title = mr.getParameter("board_title");
+			String content = mr.getParameter("board_content");
+			String writer = mr.getParameter("board_writer");
+			
+			// Board 객체에 정보 담기
+			Board b = new Board();
+			b.setBoard_title(title);
+			b.setBoard_content(content);
+			b.setBoard_writer(writer);
+			b.setOri_thumbnail(oriName);
+			b.setNew_thumbnail(reName);
+			
+			int result = new BoardService().createBoard(b);
+			RequestDispatcher view = request.getRequestDispatcher("/views/board/create_fail.jsp");
+			if(result > 0) {
+				view = request.getRequestDispatcher("/views/board/create_success.jsp");
+			}
+			view.forward(request, response);
+			
+			
 		}else {
 			response.sendRedirect("/board/create"); // 다시 게시글 작성 화면으로 고고씽
 		}
