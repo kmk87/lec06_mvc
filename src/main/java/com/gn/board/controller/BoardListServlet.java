@@ -32,6 +32,11 @@ public class BoardListServlet extends HttpServlet {
 		option.setBoard_title(title);
 		
 		// 페이징
+		// 마지막에 해줌...
+		String nowPage = request.getParameter("nowPage");
+		if(nowPage != null) {
+			option.setNowPage(Integer.parseInt(nowPage));
+		}
 		// 전체 목록 개수 조회 -> 페이징바 구성
 		option.setTotalData(new BoardService().selectBoardCount(option)); // 보드의 페이징을 상속받았기 때문에 가능
 		

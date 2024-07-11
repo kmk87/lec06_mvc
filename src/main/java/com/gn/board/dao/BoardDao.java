@@ -46,7 +46,7 @@ public class BoardDao {
 			// 검색 조건이 없는 경우
 			String sql = "SELECT COUNT(*) AS cnt FROM board";
 			if(option.getBoard_title() != null) {
-				sql+= "WHERE board_title LIKE CONCAT('%','"+option.getBoard_title()+"','%')";
+				sql += " WHERE board_title LIKE CONCAT('%','"+option.getBoard_title()+"','%')";
 			}
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
