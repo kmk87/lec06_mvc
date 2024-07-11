@@ -20,4 +20,11 @@ public class UserService {
 
 	}
 	
+//	public int loginUser(String id, String pw) {
+//		Connection conn = getConnection();
+//		int result = new UserDao().loginUser(id,pw,conn);
+//		close(conn);
+//		return result;
+//	}
+	
 }

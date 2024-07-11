@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <link href='../../resources/css/board/list.css' rel="stylesheet" type="text/css">
+<link href='../../resources/css/board/paging/css' rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%@ include file="../include/header.jsp" %>
@@ -47,6 +48,25 @@
 				</table>
 			</div>
 		</div>
-	</section>	
+	</section>
+	<% Board paging = (Board)request.getAttribute("paging"); %>
+	<% if(paging != null){ %>
+		<div class="center">
+			
+		
+		</div>
+	
+	
+	
+	
+	<% } %>
+	
+	
+	
+	
+	
+	
+	
+		
 </body>
 </html>

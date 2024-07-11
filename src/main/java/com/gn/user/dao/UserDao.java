@@ -32,4 +32,7 @@ public class UserDao {
 		}
 		return result;
 	}
+	
+	
+	//public int loginUser
 }

@@ -17,6 +17,13 @@ public class BoardService {
 		return result;
 	}
 	
+	// 페이징
+	public int selectBoardCount(Board option) {
+		Connection conn = getConnection();
+		int result = new BoardDao().selectBoardCount(option,conn);
+		return result;
+	}
+	
 	// 검색
 	public List<Board> selectBoardList(Board option){
 		Connection conn = getConnection();

@@ -31,7 +31,16 @@ public class BoardListServlet extends HttpServlet {
 		Board option = new Board();
 		option.setBoard_title(title);
 		
+		// 페이징
+		// 전체 목록 개수 조회 -> 페이징바 구성
+		option.setTotalData(new BoardService().selectBoardCount(option)); // 보드의 페이징을 상속받았기 때문에 가능
+		
+	
 		List<Board> list = new BoardService().selectBoardList(option);
+		
+		// 페이징
+		request.setAttribute("paging",option);
+		
 		
 		// /views/board/list.jsp
 		// 2. css 추가
